@@ -23,7 +23,6 @@ form.addEventListener("submit", (e) => {
   const hapus = document.createElement("button");
   hapus.textContent = "Hapus";
   hapus.classList.add("hapusBttn");
-  hapus.style.marginLeft = "10px";
 
   hapus.addEventListener("click", (e) => {
     e.preventDefault(); 
