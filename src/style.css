@@ -28,6 +28,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background: linear-gradient(#0C2B4E, #1A3D64, #1A3D64, #1D546C);
 }
 
 h1 {
@@ -40,33 +41,18 @@ h1 {
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background: linear-gradient(#0C2B4E, #1A3D64);
+  color: white;
+  box-shadow: 0px 9px 15px black;
+  border-radius: 20px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #3178c6aa);
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
 
 button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
+  margin-top: 1rem;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
@@ -74,8 +60,19 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #646cff;
+
+button {
+  background-color: #1D546C;
+}
+
+.createBttn:hover {
+  box-shadow: 0px 0px 10px cyan;
+  background-color: #AEDEFC;
+}
+
+.hapusBttn:hover {
+  box-shadow: 0px 0px 10px red;
+  background-color: #BF1A1A;
 }
 button:focus,
 button:focus-visible {

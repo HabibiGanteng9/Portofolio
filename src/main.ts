@@ -1,57 +1,47 @@
 import './style.css'
 
-const todoform = document.getElementById("todoform") as HTMLFormElement
-const todoinput = document.getElementById("todoinput") as HTMLInputElement
-const todolist = document.getElementById("todolist") as HTMLUListElement
+const form = document.getElementById("todoform") as HTMLFormElement;
+const input = document.getElementById("todoinput") as HTMLInputElement;
+const list = document.getElementById("todolist") as HTMLUListElement;
+const hapusSemuaBtn = document.getElementById("hapusSemua") as HTMLButtonElement;
 
-let todos: string[] = []
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-function render() {
-  todolist.innerHTML = ""
-  todos.forEach((todo, index) => {
-    const li = document.createElement("li")
-    li.innerText = todo
+  const text = input.value.trim();
+  if (!text) return;
 
-    const btn = document.createElement("button")
-    btn.innerText = "Hapus"
-    btn.style.marginLeft = "10px"
+  // Buat elemen LI
+  const li = document.createElement("li");
 
-    btn.addEventListener("click", () => {
-      todos.splice(index, 1)
-      render()
-    })
+  // Span untuk teks todo
+  const span = document.createElement("span");
+  span.textContent = text;
 
-    li.appendChild(btn)
-    todolist.appendChild(li)
-  })
-}
+  // Klik teks = toggle selesai
+  span.addEventListener("click", () => {
+    span.classList.toggle("done");
+  });
 
-todoform.addEventListener("submit", (ev) => {
-  ev.preventDefault()
-  const text: string = todoinput.value.trim()
+  // Tombol hapus per-item
+  const hapus = document.createElement("button");
+  hapus.textContent = "Hapus";
+  hapus.classList.add("hapusBttn");
+  hapus.style.marginLeft = "10px";
 
-  if (text === "") {
-    return
-  }
+  hapus.addEventListener("click", (e) => {
+    e.preventDefault(); 
+    li.remove();
+  });
 
-  alert 
+  li.appendChild(span);
+  li.appendChild(hapus);
+  list.appendChild(li);
 
-  todos.push(text)
-  render()
-  
-  todoform.reset()
-}) 
-
-const clearAllBtn = document.createElement("button");
-clearAllBtn.innerText = "Hapus Semua";
-clearAllBtn.style.marginTop = "10px";
-
-clearAllBtn.addEventListener("click", () => {
-  todos = [];      
-  render();        
+  input.value = "";
 });
 
-todoform.insertAdjacentElement("afterend", clearAllBtn);
-
-
-render()
+hapusSemuaBtn.addEventListener("click", (e) => {
+  e.preventDefault(); 
+  list.innerHTML = "";
+});
