@@ -9,21 +9,17 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const text = input.value.trim();
-  if (!text) return;
+  if (text === "") return alert("List tidak boleh kosong");
 
-  // Buat elemen LI
   const li = document.createElement("li");
 
-  // Span untuk teks todo
   const span = document.createElement("span");
   span.textContent = text;
 
-  // Klik teks = toggle selesai
   span.addEventListener("click", () => {
     span.classList.toggle("done");
   });
 
-  // Tombol hapus per-item
   const hapus = document.createElement("button");
   hapus.textContent = "Hapus";
   hapus.classList.add("hapusBttn");
